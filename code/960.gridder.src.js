@@ -40,24 +40,26 @@ function Grid() {
 	 * (read on 960 Gridder's website)
 	 */
 	me.settingsDef = {
-		urlBase: 'http://gridder.andreehansson.se/releases/1.3.1/',
-		gColor: '#EEEEEE',
-		gColumns: 12,
-		gOpacity: 0.45,
-		gWidth: 10,
-		pColor: '#C0C0C0',
-		pHeight: 15,
-		pOffset: 0,
-		pOpacity: 0.55,
-		center: true,
-		invert: false,
-		gEnabled: true,
-		pEnabled: true,
-		size: 960,
-		fixFlash: true,
-		setupEnabled: true,
-		pressedKeys: [],
-		delayTimer: ''
+        jQueryLoc: "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
+        baseURL: "//www.deakin.edu.au/site-admin/development/978gridder/",
+        gColor: "#FFDDDD",
+        gColumns: 12,
+        gOpacity: 0.45,
+        gWidth: 15,
+        gColWidth: 54,
+        pColor: "#C0C0C0",
+        pHeight: 15,
+        pOffset: 0,
+        pOpacity: 0.55,
+        center: true,
+        invert: false,
+        gEnabled: true,
+        pEnabled: false,
+        size: 978,
+        fixFlash: true,
+        setupEnabled: true,
+        pressedKeys: [],
+        delayTimer: ""
 	};
 
 	// Initialize grid settings object
@@ -82,7 +84,7 @@ function Grid() {
 		// Inject the newest version of jQuery :-)
 		var scriptEl = document.createElement('script');
 		scriptEl.type = "text/javascript";
-		scriptEl.src = me.settings.urlBase + "jquery.js";
+		scriptEl.src = me.settings.jQueryLoc;
 		document.body.appendChild(scriptEl);
 	}
 
@@ -138,7 +140,7 @@ function Grid() {
 		 * This is generated when a new version is being released, source can be
 		 * found in the jquery.gridder.src.css file.
 		 */
-		 jQuery('<style type"text/css">#g-setup{position:absolute;top:150px;left:-310px;padding:6px;margin:0;list-style:none;width:320px!important;background-color:#d1cfe6;border:2px solid #a19bd1;z-index:2100;}#g-setup *{background:transparent!important;border:0!important;color:#58517c!important;font-family:Verdana,Geneva,sans-serif!important;font-size:10px!important;font-weight:normal!important;letter-spacing:normal!important;line-height:1!important;list-style-type:none!important;margin:0!important;padding:0!important;text-decoration:none!important;text-indent:0!important;text-transform:none!important;word-spacing:0!important;z-index:2100!important;}#g-setup .head{font-weight:bold!important;text-align:center;border-bottom:1px solid #7cb267!important;}#g-setup ul{width:150px;float:left!important;}#g-setup li{clear:left;padding:5px!important;}* html #g-setup li{clear:none!important;padding:4px!important;}#g-setup span{float:left!important;width:50px;padding:1px 4px 0 0!important;text-align:right!important;line-height:1.5!important;}#g-setup input,#g-setup select{float:left!important;width:70px;border:1px solid #a19bd1!important;background-color:#e7e6ee!important;padding:2px!important;}#g-setup select{width:77px;padding:0!important;}#g-setup-misc{margin-top:5px!important;clear:left;float:none!important;width:300px!important;border-top:1px solid #7cb267!important;}#g-setup-misc span{line-height:1.1!important;width:200px;}#g-setup-misc input{width:15px;padding:0!important;height:15px;}#g-setup-tab{width:26px;overflow:hidden;position:absolute;top:0;left:100%;margin-left:-26px!important;z-index:2100!important;}#g-setup-tab img{left:0;position:relative;}#g-grid{left:0;position:absolute;z-index:500;top:0;}#g-grid .g-vertical,#g-grid .g-horizontal{position:absolute;z-index:1000;}*:first-child+html #g-grid .g-horizontal,*:first-child+html #g-grid .g-vertical{margin-left:-1px;}#g-grid .g-horizontal{min-height:1px;height:1px;font-size:0;line-height:0;}</style>').appendTo('head');
+		 jQuery('<style type"text/css">#g-setup{position:absolute;top:150px;left:-310px;padding:6px;margin:0;list-style:none;width:320px!important;background-color:#d1cfe6;border:2px solid #a19bd1;z-index:2100;}#g-setup *{background:transparent!important;border:0!important;color:#58517c!important;font-family:Verdana,Geneva,sans-serif!important;font-size:10px!important;font-weight:normal!important;letter-spacing:normal!important;line-height:1!important;list-style-type:none!important;margin:0!important;padding:0!important;text-decoration:none!important;text-indent:0!important;text-transform:none!important;word-spacing:0!important;z-index:2100!important;}#g-setup .head{font-weight:bold!important;text-align:center;border-bottom:1px solid #7cb267!important;}#g-setup ul{width:150px;float:left!important;}#g-setup li{clear:left;padding:5px!important;list-style:none;}* html #g-setup li{clear:none!important;padding:4px!important;}#g-setup span{float:left!important;width:50px;padding:1px 4px 0 0!important;text-align:right!important;line-height:1.5!important;}#g-setup input,#g-setup select{float:left!important;width:70px;border:1px solid #a19bd1!important;background-color:#e7e6ee!important;padding:2px!important;}#g-setup select{width:77px;padding:0!important;}#g-setup-misc{margin-top:5px!important;clear:left;float:none!important;width:300px!important;border-top:1px solid #7cb267!important;}#g-setup-misc span{line-height:1.1!important;width:200px;}#g-setup-misc input{width:15px;padding:0!important;height:15px;}#g-setup-tab{width:26px;overflow:hidden;position:absolute;top:0;left:100%;margin-left:-26px!important;z-index:2100!important;}#g-setup-tab img{left:0;position:relative;}#g-grid{left:0;position:absolute;z-index:500;top:0;}#g-grid .g-vertical,#g-grid .g-horizontal{position:absolute;z-index:1000;}*:first-child+html #g-grid .g-horizontal,*:first-child+html #g-grid .g-vertical{margin-left:-1px;}#g-grid .g-horizontal{min-height:1px;height:1px;font-size:0;line-height:0;}</style>').appendTo('head');
 
 		// Get initial document height
 		me.settings.height = jQuery(document).height();
@@ -146,13 +148,13 @@ function Grid() {
 		if (me.settings.setupEnabled) {
 
 			// Same as for the CSS, all the HTML used to setup 960 Gridder
-			jQuery('<div id="g-setup"><ul><li class="head">Vertical</li><li><span>Color</span><input id="g-setup-gColor" /></li><li><span>Opacity</span><input id="g-setup-gOpacity" /></li><li><span>Width</span><input id="g-setup-gWidth" /></li><li><span>Columns</span><select id="g-setup-gColumns"></select></li></ul><ul><li class="head">Horizontal</li><li><span>Color</span><input id="g-setup-pColor" /></li><li><span>Opacity</span><input id="g-setup-pOpacity" /></li><li><span>Height</span><input id="g-setup-pHeight" /></li><li><span>Offset</span><input id="g-setup-pOffset" /></li></ul><ul id="g-setup-misc"><li><span>Enable vertical (gutters)</span><input id="g-setup-gEnabled" type="checkbox" /></li><li><span>Enable horizontal (paragraphs)</span><input id="g-setup-pEnabled" type="checkbox" /></li><li><span>Invert vertical</span><input id="g-setup-invert" type="checkbox" /></li><li><span>Center grid</span><input id="g-setup-center" type="checkbox" /></li></ul><div style="clear: left;"></div><div id="g-setup-tab"><a href="javascript:;"><img src="http://gridder.andreehansson.se/releases/1.3.1/logo-sprite.png" alt="" /></a></div></div>').appendTo('body');
+            jQuery('<div id="g-setup"><ul><li class="head">Vertical</li><li><span>Color</span><input id="g-setup-gColor" /></li><li><span>Opacity</span><input id="g-setup-gOpacity" /></li><li><span>Margin width</span><input id="g-setup-gWidth" /></li><li><span>Columns</span><select id="g-setup-gColumns"></select></li></ul><ul><li class="head">Horizontal</li><li><span>Color</span><input id="g-setup-pColor" /></li><li><span>Opacity</span><input id="g-setup-pOpacity" /></li><li><span>Height</span><input id="g-setup-pHeight" /></li><li><span>Offset</span><input id="g-setup-pOffset" /></li></ul><ul id="g-setup-misc"><li><span>Enable vertical (gutters)</span><input id="g-setup-gEnabled" type="checkbox" /></li><li><span>Enable horizontal (paragraphs)</span><input id="g-setup-pEnabled" type="checkbox" /></li><li><span>Invert vertical</span><input id="g-setup-invert" type="checkbox" /></li><li><span>Center grid</span><input id="g-setup-center" type="checkbox" /></li></ul><div style="clear: left;"></div><div id="g-setup-tab"><a href="javascript:;"><img src="'+me.settings.baseURL+'/logo-sprite.png" alt="" /></a></div></div>').appendTo("body");
 
 			// Calculate suitable number of columns based on width
 			for (var i = 2; i < 48; i++) {
-				if (Math.round((me.settings.size / i)) === (me.settings.size / i)) {
-					jQuery('<option value="' + i + '">' + i + '</option>').appendTo('#g-setup-gColumns');
-				}
+                if (Math.round((me.settings.size - (me.settings.gWidth * 2 * (i - 1)))  / i) === (me.settings.size - (me.settings.gWidth * 2 * (i - 1))) / i) {
+                    jQuery('<option value="' + i + '">' + i + "</option>").appendTo("#g-setup-gColumns");
+                }
 			}
 
 			// Populate setup input boxes with the default values
@@ -311,12 +313,15 @@ function Grid() {
 		if (me.settings.center) {
 			jQuery('#g-grid').css({
 				left: '50%',
-				marginLeft: -((me.settings.size / 2) + me.settings.gWidth)
+                marginLeft: -(me.settings.size / 2) 
 			});
 		}
 
 		// Create vertical columns
 		if (me.settings.gEnabled && me.settings.gColumns > 0) {
+          
+            // calculate the column width, based on num of columns and margin width
+            me.settings.gColWidth = (me.settings.size - ((me.settings.gColumns-1) * 2 * me.settings.gWidth)) / me.settings.gColumns;
 
 			// Loop through until we have as many vertical columns as defined
 			if (me.settings.invert) {
@@ -333,28 +338,25 @@ function Grid() {
 				});
 
 				// Create inner columns
-				for (var i = 0; i < me.settings.gColumns; i++) {
-					var w = (me.settings.size / me.settings.gColumns) - (me.settings.gWidth * 2);
-					var gW = (me.settings.gWidth * 2);
-
-					me._createEntity('vertical', {
-						left: ((w + gW) * i) + gW,
-						width: w + 'px',
-						height: me.settings.height,
-						backgroundColor: me.settings.gColor,
-						opacity: me.settings.gOpacity
-					});
-				}
+                for (var i = 1; i < me.settings.gColumns; i++) {
+                    me._createEntity("vertical", {
+                        left: (i * me.settings.gColWidth) + ((i-1) * 2 * me.settings.gWidth),
+                        width: (me.settings.gWidth * 2),
+                        height: me.settings.height,
+                        backgroundColor: me.settings.gColor,
+                        opacity: me.settings.gOpacity
+                    });
+                }
 
 				// Avoid creating a horizontal scrollbar
 				if ((me.settings.height+10) > jQuery(window).height()) {
-					outerSpacing -= 10;
+					//outerSpacing -= 10;
 				}
 
 				// Create right outer line
 				me._createEntity('vertical', {
 					left: '100%',
-					marginLeft: 20,
+					marginLeft: 0,
 					width: outerSpacing,
 					height: me.settings.height,
 					backgroundColor: me.settings.gColor,
@@ -362,15 +364,15 @@ function Grid() {
 				});
 			}
 			else {
-				for (var i = 0; i <= me.settings.gColumns; i++) {
-					me._createEntity('vertical', {
-						left: ((me.settings.size / me.settings.gColumns) * i),
-						width: (me.settings.gWidth * 2),
-						height: me.settings.height,
-						backgroundColor: me.settings.gColor,
-						opacity: me.settings.gOpacity
-					});
-				}
+                for (var i = 0; i < me.settings.gColumns; i++) {
+                    me._createEntity("vertical", {
+                        left: (i * me.settings.gColWidth) + (i * me.settings.gWidth * 2) ,
+                        width: me.settings.gColWidth + "px",
+                        height: me.settings.height,
+                        backgroundColor: me.settings.gColor,
+                        opacity: me.settings.gOpacity
+                    });
+                }
 			}
 		}
 
@@ -385,7 +387,7 @@ function Grid() {
 					top: ((me.settings.height / horColumns) * i) + me.settings.pOffset,
 					left: '50%',
 					marginLeft: -(me.settings.size / 2),
-					width: (me.settings.size + (me.settings.gWidth * 2)),
+                    width: me.settings.size,
 					backgroundColor: me.settings.pColor,
 					opacity: me.settings.pOpacity
 				});
