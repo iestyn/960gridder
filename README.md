@@ -15,6 +15,8 @@ How to use
 
 Add this code to a bookmarklet in your browser:
 
+```javascript
 javascript:(function()%7Bdocument.body.appendChild(document.createElement(%27script%27)).src%3D%27//www.deakin.edu.au/__data/assets/js_file/0014/50270/978.gridder.js%27%3B%7D)()%3B
+```
 
 Click the bookmark to overlay the 978 grid on the current page. Thats it.
